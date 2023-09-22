@@ -3,36 +3,30 @@
   <body>
     <div id="root"></div>
   </body>
-
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    // React.createElement("html태그", {property(id, class, eventListener 가능)}, "content"): JavaScript 로 element를 생성해서 html로 바꾸는 것
-    // --> createElement 안 쓰고 jsx 형식으로 코드 줄임
-    const root = document.getElementById("root");
-    const Title = () => (
-      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-        Hello I'm a title
-      </h3>
-    );
-
-    // vanilla.html 의 #1~4줄을 React.createElement로 대체함
-    // --> createElement 안 쓰고 jsx 형식으로 코드 줄임 _ html과 같은 규칙을 사용하여 빠르게 이해하기 편함
-    const Button = () => (
-      <button
-        style={{ backgroundColor: "tomato" }}
-        onClick={() => console.log("im clicked")}>
-        Click me
-      </button>
-    );
-
-    // const container = React.createElement("div", null, [Title, Button]);
-    const Container = (
-      <div>
-        <Title /> <Button />
-      </div>
-    );
-    ReactDOM.render(Container, root); // React element(container) 들을 root div 안에서 보여주라는 뜻
+    function App() {
+      const [minutes, setMinutes] = React.useState();
+      const onChange = () => {
+        console.log("somebody wrote");
+      };
+      return (
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            value={minute}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+          />
+          <input placeholder="Hours" type="number" />
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
   </script>
 </html>
